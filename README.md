@@ -1,12 +1,16 @@
 # Puppet Windows Selenium Grid (Client)
 
-This module configures a Windows node for use as a Selenium Grid client - supporting Firefox, Chrome and Internet Explorer out of the box.
-
-_side-note: Selenium 2 doesn't support Firefox beyond version 47.0.1 - you'll want to use Selenium Grid 3 to avoid this._
-
 [![Build Status](https://travis-ci.org/ve-interactive/puppet-windows_selenium_grid.png?branch=master)](https://travis-ci.org/ve-interactive/puppet-windows_selenium_grid)
 
-You'll probably want to use it in conjunction with
+This module configures a Windows node for use as a Selenium Grid client.
+
+In order to launch browsers, the Client will need to be logged in interactively. We're making use of the [Windows Auto-Login](https://github.com/tombuildsstuff/puppet-windows_autologin) module to achieve that. We're also using the [Selenium](https://github.com/jhoblitt/puppet-selenium) module used to create the Selenium Grid Hub (master).
+
+## Supported Browsers
+ - Firefox
+   - _side-note: Selenium 2 doesn't support Firefox beyond version 47.0.1 - you'll want to use Selenium Grid 3 to avoid this._
+ - Chrome _(we're using Enterprise for convenience when installing)_
+ - Internet Explorer
 
 ## Example usage (minimal)
 ```
