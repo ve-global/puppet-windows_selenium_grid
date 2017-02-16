@@ -1,0 +1,65 @@
+{
+  "capabilities":
+  [
+<%=
+  require 'json'
+  capabilities = []
+
+  if @firefox_versions.any?
+    # Selenium Grid defaults to the first one in the list (oldest browser)
+    for @version in @firefox_versions.sort_by { |v| v }.reverse
+      capabilities.push(JSON.generate({
+        :browserName     => 'firefox',
+        :version         => @version,
+        :platform        => 'WINDOWS',
+        :maxInstances    => 5,
+        :takesScreenshot => true,
+        :firefox_binary  => @selenium_grid_directory + "\\firefox\\" + @version + "\\firefox.exe",
+        :firefox_profile => @selenium_grid_directory + "\\firefox\\profile"
+      }))
+    end
+  end
+
+  if @internet_explorer
+    capabilities.push(JSON.generate({
+      :browserName        => 'internet explorer',
+      :version            => @internet_explorer_version,
+      :platform           => 'WINDOWS',
+      :maxInstances       => 1,
+      :takesScreenshot    => false,
+      :ensureCleanSession => true
+    }))
+  end
+
+  if @google_chrome
+    capabilities.push(JSON.generate({
+      :browserName        => 'chrome',
+      :version            => 'ga',
+      :platform           => 'WINDOWS',
+      :maxInstances       => 5,
+      :takesScreenshot    => true
+    }))
+  end
+
+  capabilities.join(',')
+%>
+
+  ],
+  "configuration":
+  {
+    "nodeTimeout": 120,
+    "host": "<%=@selenium_grid_client_host %>",
+    "port": <%=@selenium_grid_client_port %>,
+    "hubPort": 4444,
+    "hubHost": "<%=@selenium_grid_host %>",
+    "nodePolling": 2000,
+    "registerCycle": 10000,
+    "register": true,
+    "cleanUpCycle": 2000,
+    "throwOnCapabilityNotPresent": true,
+    "timeout": 30000,
+    "maxSession": 20,
+    "Dwebdriver.ie.driver=<%=@ie_driver_path %>": "",
+    "Dwebdriver.chrome.driver=<%=@chrome_driver_path %>": ""
+  }
+}

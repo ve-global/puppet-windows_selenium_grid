@@ -1,0 +1,43 @@
+{
+  "name": "ve-interactive/windows_selenium_grid",
+  "version": "1.0.0",
+  "author": "Ve Interactive",
+  "summary": "Builds a fully functional Selenium Grid client on Windows",
+  "license": "Apache-2.0",
+  "source": "https://github.com/ve-interactive/puppet-windows_selenium_grid",
+  "project_page": "https://github.com/ve-interactive/puppet-windows_selenium_grid",
+  "issues_url": "https://github.com/ve-interactive/puppet-windows_selenium_grid/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">=4.9.0"
+    },
+    {
+      "name": "puppetlabs/download_file",
+      "version_requirement": ">=1.2.1"
+    }
+  ],
+  "data_provider": null,
+  "description": "Builds a fully functional Selenium Grid client on Windows",
+  "tags": [
+    "testing",
+    "selenium",
+    "grid",
+    "browsers",
+    "windows"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "windows",
+      "operatingsystemrelease": [
+        "2012R2"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">=3.8.0"
+    }
+  ]
+}
